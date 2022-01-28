@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Google Analytics -->
+		<script src="/showcase/ga.js"></script>
+		<meta charset="utf-8">
+		<meta name=viewport content="width=device-width">
+		<title>BMI</title>
+		<link rel="stylesheet" href="../../../sample.css">
+		<style>
+			#wrap {
+				width: 320px;
+				margin: 0 auto;
+			}
+
+			input {
+				width: 150px;
+				margin: 0 0.5em;
+				text-align: right;
+			}
+
+			button {
+				width: 100%;
+				margin: 1em auto;
+			}
+		</style>
+		<!-- manifest.json呼出し -->
+		<link rel="manifest" href="./manifest.json">
+	</head>
+	<body>
+		<h1>Body Mass Index</h1>
+		<div id=wrap>
+			<p>身長：<input type="text" id="h">cm</p>
+			<p>体重：<input type="text" id="w">kg</p>
+			<button id="btn1">計算する</button>
+		</div>
+		<footer>
+			<p><small>(C)<a
+						href="https://www.street-academy.com/steachers/1274?conversion_name=direct_message&tracking_code=f3037c532c76e32eb5636350d0147bc9">なかしまぁ先生のHTML5教室</a>・<a
+						href="https://webtechpromo.org">Web技術振興協会</a></small></p>
+		</footer>
+		<script>
+
+			const H = document.getElementById("h");
+			const W = document.getElementById("w");
+			const BTN1 = document.getElementById("btn1");
+
+			BTN1.addEventListener("click", () => {
+				//入力値を数字に変換
+				let h = Number(H.value);
+				let w = Number(W.value);
+
+				//計算
+				let bmi = w / (h / 100 * h / 100);
+				bmi = Math.round(bmi * 10) / 10;
+
+				//メッセージ
+				let msg;
+				if (bmi < 18.5) { msg = "低体重かも"; }
+				else if (25 < bmi) { msg = "重いかも"; }
+				else { msg = "ちょうどいいかも"; }
+
+				//表示
+				BTN1.innerHTML = "あなたの<br>BMIは" + bmi + "。<br>" + msg;
+			});
+		</script>
+		<script>
+
+			// service workerが有効なら、service-worker.js を登録します
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('./service-worker.js').then(
+					function () {
+						console.log('Service Worker Registered');
+
+					}
+				);
+			}
+
+			function update() {
+				navigator.serviceWorker.getRegistration()
+					.then(
+						registration => { registration.unregister(); }
+					)
+			}
+		</script>
+	</body>
+</html>
