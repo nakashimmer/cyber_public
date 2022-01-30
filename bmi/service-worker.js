@@ -11,7 +11,7 @@ const urlsToCache = [
 //①インストール時にキャッシュ追加
 self.addEventListener("install", (event) => {
 	event.waitUntil(
-		caches.open(casheName)
+		caches.open(cacheName)
 			.then((cache) => {
 				console.log("Opened cache");
 				//キャッシュに追加
