@@ -7,67 +7,58 @@
 		<meta name=viewport content="width=device-width">
 		<title>BMI</title>
 		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				font-size:20px;
+			}
 			#wrap {
 				width: 320px;
 				margin: 0 auto;
 			}
 
 			input {
-				width: 150px;
-				margin: 0 0.5em;
+				width: 130px;
+				margin:  1em;
 				text-align: right;
+				padding:1em;
 			}
 
-			button {
-				width: 100%;
+			#btn1 {
+				width: 80%;
 				margin: 1em auto;
+				display: block;
+				padding: 1em;
+			}
+			header,footer{
+				background-color: #666;
+				color:#fff;
+				text-align:center;
 			}
 		</style>
 		<!-- manifest.json呼出し -->
 		<link rel="manifest" href="./manifest.json">
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 	</head>
 	<body>
-		<h1>Body Mass Index</h1>
 		<div id=wrap>
-			<p>身長：<input type="text" id="h">cm</p>
-			<p>体重：<input type="text" id="w">kg</p>
-			<button id="btn1">計算する</button>
+			<header>
+				<h1>BMI計算機</h1>
+			</header>
+			<main>
+				<p>身長：<input type="tel" id="height">cm</p>
+				<p>体重：<input type="tel" id="weight">kg</p>
+				<button id="btn1">計算する</button>
+			</main>
+			<footer>
+				<p><small>(C)Nakashima</small></p>
+			</footer>
 		</div>
-		<footer>
-			<p><small>(C)<a
-						href="https://www.street-academy.com/steachers/1274?conversion_name=direct_message&tracking_code=f3037c532c76e32eb5636350d0147bc9">なかしまぁ先生のHTML5教室</a>・<a
-						href="https://webtechpromo.org">Web技術振興協会</a></small></p>
-		</footer>
+		<script src="script.js"></script>
 		<script>
-
-			const H = document.getElementById("h");
-			const W = document.getElementById("w");
-			const BTN1 = document.getElementById("btn1");
-
-			BTN1.addEventListener("click", () => {
-				//入力値を数字に変換
-				let h = Number(H.value);
-				let w = Number(W.value);
-
-				//計算
-				let bmi = w / (h / 100 * h / 100);
-				bmi = Math.round(bmi * 10) / 10;
-
-				//メッセージ
-				let msg;
-				if (bmi < 18.5) { msg = "低体重かも"; }
-				else if (25 < bmi) { msg = "重いかも"; }
-				else { msg = "ちょうどいいかも"; }
-
-				//表示
-				BTN1.innerHTML = "あなたの<br>BMIは" + bmi + "。<br>" + msg;
-			});
-		</script>
-		<script>
-
-			// service workerが有効なら、service-worker.js を登録します
+			// service-worker.js を登録します
 			navigator.serviceWorker.register('./service-worker.js');
-
 		</script>
 	</body>
 </html>

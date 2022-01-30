@@ -1,16 +1,19 @@
 {
-  "name": "BMI計算機",
-  "short_name": "BMI",
-  "background_color": "#fc980c",
-  "icons": [{
-      "src": "./html5-256.png",
-      "sizes": "256x256",
-      "type": "image/png"
-    },{
-      "src": "./html5-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }],
-  "start_url": "./index.html",
-  "display": "standalone"
+	"name": "BMI計算機",
+	"short_name": "BMI",
+	"background_color": "#fc980c",
+	"icons": [
+		{
+			"src": "./html5-256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "./html5-192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		}
+	],
+	"start_url": "./index.html",
+	"display": "standalone"
 }
