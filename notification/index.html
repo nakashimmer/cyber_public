@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>プッシュ通知サンプル</title>
+  </head>
+  <body>
+    <h1>Hello Push</h1>
+    <button id="confirm">通知許可の確認</button>
+    <button id="send">通知を送信</button>
+    <script>
+      window.addEventListener('load', () => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker
+            .register('sw.js')
+            .then(registration => console.log('registered', registration))
+            .catch(error => console.log('error', error));
+        }
+      });
+
+      document
+        .getElementById('confirm')
+        .addEventListener('click', onClickConfirm);
+
+      document.getElementById('send').addEventListener('click', onClickSend);
+
+      function onClickConfirm() {
+        if (!('Notification' in window)) {
+          alert('このブラウザはプッシュ通知に対応してません。。。');
+          return;
+        }
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') alert('通知の許可がもらえました');
+          if (permission === 'denied') alert('通知の許可がもらえませんでした');
+        });
+      }
+
+      function onClickSend() {
+        if (!('Notification' in window)) {
+          alert('このブラウザはプッシュ通知に対応してません。。。');
+          return;
+        }
+
+        const permission = Notification.permission;
+        if (permission === 'granted') {
+          navigator.serviceWorker.ready.then(registration => {
+            registration.active.postMessage('これはプッシュ通信です');
+          });
+        } else {
+          alert('通知の許可がもらえませんよ');
+        }
+      }
+    </script>
+  </body>
+</html>
