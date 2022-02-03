@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Document</title>
+		<style>
+			*{margin:0;padding: 0;font-size:20px;;}
+			#wrap{
+				display:flex;
+				
+			}
+			section{
+				margin:10px;
+				flex:1;
+			
+				border: 1px solid gray;
+			}
+			pre {
+				border: 1px dotted gray;
+				padding:10px;
+				margin:10px;
+				background-color: #aaa;
+			}
+			h1,h2,h3{
+				margin:5px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>変数宣言のスコープ</h1>
+		<div id="wrap">
+			<section>
+				<h2>var</h2>
+				<section>
+					<h3>グローバル変数</h3>
+					<pre><code>var a1=1;
+
+function fc1(){
+	a1=2;
+}
+fc1();
+
+aの値は<span id="a1">エラー</span></code></pre>
+					<script>
+						var a1 = 1;
+						function fc1() {
+							a1 = 2;
+						}
+						fc1();
+						document.getElementById("a1").innerHTML = a1;
+					</script>
+				</section>
+				<section>
+					<h3>ローカル変数</h3>
+					<pre><code>var a2=1;
+
+function fc2(){
+	var a2=2;
+}
+fc2();
+
+aの値は<span id="a2">エラー</span></code></pre>
+					<script>
+						var a2 = 1;
+						function fc2() {
+							var a2 = 2;
+						}
+						fc2();
+						document.getElementById("a2").innerHTML = a2;
+					</script>
+				</section>
+			</section>
+
+			<section>
+				<h2>let</h2>
+				<section>
+					<h3>グローバル変数</h3>
+					<pre><code>let a3=1;
+
+function fc3(){
+	a3=2;
+}
+fc3();
+
+a3の値は<span id="a3">エラー</span></code></pre>
+					<script>
+						let a3 = 1;
+						function fc3() {
+							a3 = 2;
+						}
+						fc3();
+						document.getElementById("a3").innerHTML = a3;
+					</script>
+				</section>
+				<section>
+					<h3>ローカル変数</h3>
+					<pre><code>let a4=1;
+
+function fc4(){
+	let a4=2;
+}
+fc4();
+
+a4の値は<span id="a4">エラー</span></code></pre>
+					<script>
+						let a4 = 1;
+						function fc4() {
+							let a4 = 2;
+						}
+						fc4();
+						document.getElementById("a4").innerHTML = a4;
+					</script>
+				</section>
+			</section>
+
+			<section>
+				<h2>const</h2>
+				<section>
+					<h3>グローバル変数</h3>
+					<pre><code>const a5=1;
+
+function fc5(){
+	a5=2;
+}
+fc5();
+
+a3の値は<span id="a5">エラー</span></code></pre>
+					<script>
+						const a5 = 1;
+						function fc5() {
+							a5 = 2;
+						}
+						fc5();
+						document.getElementById("a5").innerHTML = a5;
+					</script>
+				</section>
+				<section>
+					<h3>ローカル変数</h3>
+					<pre><code>const a6=1;
+
+function fc6(){
+	const a6=2;
+}
+fc6();
+
+a6の値は<span id="a6">エラー</span></code></pre>
+					<script>
+						const a6 = 1;
+						function fc6() {
+							const a6 = 2;
+						}
+						fc6();
+						document.getElementById("a6").innerHTML = a6;
+					</script>
+				</section>
+			</section>
+		</div>
+	</body>
+</html>
