@@ -39,7 +39,7 @@ function classifyVideo() {
 // When we get a result
 function gotResult(err, results) {
 	// The results are in an array ordered by confidence.
-	let res = translateText(results[0].label, "en", "ja");
+	let res = results[0].label; //translateText(results[0].label, "en", "ja");
 	select('#result').html(res);
 	select('#probability').html(nf(results[0].confidence, 0, 2));
 	
