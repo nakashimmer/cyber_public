@@ -102,5 +102,5 @@ function gotData(err, result) {
   }
   select('#status').html('準備完了');
   select('#original').html(original);
-  select('#prediction').html(result.sample;)// + "<br><i>翻訳:"+translateText(original+result.sample,"en","ja")+"</i>");
+  select('#prediction').html(result.sample + "<br><i>翻訳:"+translateText(original+result.sample,"en","ja")+"</i>");
 }
