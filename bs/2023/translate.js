@@ -1,5 +1,5 @@
 function translateText(txt,fromlang,tolang) {
-	let apiKey = "AIzaSyASagMyfgqbf1R8w6HIQTZurXFiwu08cQ8";
+	let apiKey = "";
 
 	let text = txt
 	let fromLang = fromlang;
