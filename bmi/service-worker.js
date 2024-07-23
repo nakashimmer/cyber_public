@@ -1,4 +1,4 @@
-const cacheName = "bmi3";
+const cacheName = "bmi4";
 const urlsToCache = [
 	"./apple-touch-icon.png",
 	"./html5-192.png",
